@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Public+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+:root,
+.dark-theme {
+  --background: #0d0e14;
+  --foreground: #e3e1ec;
+  
+  --primary: #6366f1;
+  --accent: #6366f1;
+  --accent-secondary: #7072ac;
+  --muted: #c7c4d7;
+  --muted-light: #1b1b23;
+  --success: #34d399;
+  --error: #ffb4ab;
+  --border: #2e2e3a;
+
+  /* Google Stitch design system tokens for Indigo Fidelity */
+  --surface: #0d0e14;
+  --surface-container-low: #1b1b23;
+  --surface-container-high: #1f1f27;
+  --surface-container-highest: #292932;
+  --surface-variant: #34343d;
+  --outline-variant: #464554;
+  --on-surface-variant: #c7c4d7;
+  --on-surface: #e3e1ec;
+  --primary-container: #8083ff;
+  --on-primary: #1000a9;
+  --on-secondary: #292a60;
+}
+
+
+@theme {
+  --color-brand-bg: var(--background);
+  --color-brand-fg: var(--foreground);
+  --color-brand-primary: var(--primary);
+  --color-brand-accent: var(--accent);
+  --color-brand-accent-sec: var(--accent-secondary);
+  --color-brand-muted: var(--muted);
+  --color-brand-muted-light: var(--muted-light);
+  --color-brand-success: var(--success);
+  --color-brand-error: var(--error);
+  --color-brand-border: var(--border);
+
+  /* Google Stitch mappings */
+  --color-surface: var(--surface);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+  --color-outline-variant: var(--outline-variant);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-on-surface: var(--on-surface);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-on-secondary: var(--on-secondary);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Hide all scrollbars globally while preserving scroll functionality */
+* {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Opera */
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .glass-panel {
+  background: rgba(31, 31, 39, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(144, 143, 160, 0.1);
+}
+
+/* Custom animations */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .6;
+  }
+}
+
+.pulse-skeleton {
+  animation: pulse-subtle 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: var(--border);
+}
