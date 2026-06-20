@@ -26,6 +26,18 @@ function LoginContent() {
     }
   }, [isAuthenticated, router, redirectPath]);
 
+  const handleQuickLogin = (role: 'customer' | 'admin') => {
+    if (role === 'customer') {
+      setEmail('customer@brand.com');
+      setPassword('customerpassword');
+      toast.success('Customer credentials auto-filled!');
+    } else {
+      setEmail('admin@brand.com');
+      setPassword('adminpassword');
+      toast.success('Admin credentials auto-filled!');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
@@ -155,10 +167,20 @@ function LoginContent() {
           </div>
 
           {/* Development fast login tips */}
-          <div className="border-t border-[#22212a]/60 pt-4 text-[10px] text-gray-500 space-y-1 leading-relaxed bg-[#13121a]/40 p-2.5 rounded">
-            <p className="font-semibold text-white uppercase text-[8px] tracking-wider mb-1">Development quick logins:</p>
-            <p>Customer: <code className="bg-[#22212a] px-1 rounded text-white font-bold">customer@brand.com</code> / password: <code className="bg-[#22212a] px-1 rounded text-white font-bold">customerpassword</code></p>
-            <p>Admin: <code className="bg-[#22212a] px-1 rounded text-white font-bold">admin@brand.com</code> / password: <code className="bg-[#22212a] px-1 rounded text-white font-bold">adminpassword</code></p>
+          <div className="border-t border-[#22212a]/60 pt-4 text-[10px] text-gray-500 space-y-1.5 leading-relaxed bg-[#13121a]/40 p-2.5 rounded">
+            <p className="font-semibold text-white uppercase text-[8px] tracking-wider mb-1">Development quick logins (click to autofill):</p>
+            <div 
+              onClick={() => handleQuickLogin('customer')}
+              className="cursor-pointer hover:bg-white/5 p-1 rounded transition-colors group text-gray-400 hover:text-white"
+            >
+              Customer: <code className="bg-[#22212a] px-1 rounded text-white font-bold group-hover:bg-[#312e81]/60 transition-colors">customer@brand.com</code> / password: <code className="bg-[#22212a] px-1 rounded text-white font-bold group-hover:bg-[#312e81]/60 transition-colors">customerpassword</code>
+            </div>
+            <div 
+              onClick={() => handleQuickLogin('admin')}
+              className="cursor-pointer hover:bg-white/5 p-1 rounded transition-colors group text-gray-400 hover:text-white"
+            >
+              Admin: <code className="bg-[#22212a] px-1 rounded text-white font-bold group-hover:bg-[#312e81]/60 transition-colors">admin@brand.com</code> / password: <code className="bg-[#22212a] px-1 rounded text-white font-bold group-hover:bg-[#312e81]/60 transition-colors">adminpassword</code>
+            </div>
           </div>
         </form>
       </div>
